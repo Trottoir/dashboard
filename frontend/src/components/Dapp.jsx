@@ -1,5 +1,5 @@
 import React from "react";
-
+import PriceChart from '../features/price_chart/PriceChart';
 // We'll use ethers to interact with the Ethereum network and our contract
 import { ethers } from "ethers";
 
@@ -18,6 +18,7 @@ import { Transfer } from "./Transfer";
 import { TransactionErrorMessage } from "./TransactionErrorMessage";
 import { WaitingForTransactionMessage } from "./WaitingForTransactionMessage";
 import { NoTokensMessage } from "./NoTokensMessage";
+import { Crypto } from '../features/crypto/Crypto';
 
 // This is the Hardhat Network id, you might change it in the hardhat.config.js
 // Here's a list of network ids https://docs.metamask.io/guide/ethereum-provider.html#properties
@@ -93,6 +94,7 @@ export class Dapp extends React.Component {
       <div className="container p-4">
         <div className="row">
           <div className="col-12">
+            <Crypto/>
             <h1>
               {this.state.tokenData.name} ({this.state.tokenData.symbol})
             </h1>
@@ -109,6 +111,7 @@ export class Dapp extends React.Component {
         <hr />
 
         <div className="row">
+          <PriceChart width="500" height="500"/>
           <div className="col-12">
             {/* 
               Sending a transaction isn't an immidiate action. You have to wait
@@ -367,3 +370,4 @@ export class Dapp extends React.Component {
     return false;
   }
 }
+export default Dapp;
